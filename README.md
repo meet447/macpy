@@ -1,20 +1,12 @@
-# MacPy - Python GUI Framework for macOS
+# MacPy - macOS GUI Framework
 
-MacPy is a Python framework for creating native macOS applications using PyObjC. It provides simple and intuitive components for building user interfaces.
+MacPy is a Python framework for creating native macOS GUI applications using PyObjC.
 
 ## Features
 
 - Native macOS UI components
-- Simple API for creating windows and controls
-- Support for common UI elements:
-  - Window
-  - Button
-  - Label
-  - Image
-  - Checkbox
-  - Slider
-  - TextInput
-- Callback support for interactive components
+- Simple and intuitive API
+- Callback support for user interactions
 - URL image loading functionality
 
 ## Installation
@@ -25,81 +17,77 @@ pip install macpy
 
 ## Usage
 
-### Basic Window
-
-```python
-from macpy import Window
-
-window = Window('My Window', width=800, height=600)
-window.show()
-```
-
-### Button with Callback
-
-```python
-from macpy import Button, Window
-
-window = Window('Button Example', width=400, height=300)
-
-button = Button('Click Me', x=50, y=50, width=100, height=32)
-button.set_callback(lambda: print('Button clicked!'))
-
-window.add(button)
-window.show()
-```
-
-### Label
-
-```python
-from macpy import Label, Window
-
-window = Window('Label Example', width=400, height=300)
-
-label = Label('Hello, MacPy!', x=50, y=50, width=200, height=32)
-
-window.add(label)
-window.show()
-```
-
-### Image from URL
-
-```python
-from macpy import Image, Window
-
-window = Window('Image Example', width=400, height=300)
-
-image = Image('https://example.com/image.png', x=50, y=50, width=200, height=200)
-
-window.add(image)
-window.show()
-```
-
-## Components Documentation
-
 ### Window
 
-- `Window(title, width, height)`
-- `show()` - Display the window
-- `add(component)` - Add a UI component to the window
+```python
+from macpy.window import Window
+
+window = Window('My Window', 800, 600)
+window.show()
+```
 
 ### Button
 
-- `Button(text, x, y, width, height)`
-- `set_callback(callback)` - Set click handler
+```python
+from macpy.button import Button
+
+def on_click(): print('Button clicked!')
+
+button = Button('Click Me', on_click)
+window.add(button)
+```
 
 ### Label
 
-- `Label(text, x, y, width, height)`
-- `set_text(text)` - Update label text
+```python
+from macpy.label import Label
+
+label = Label('Hello, World!')
+window.add(label)
+```
 
 ### Image
 
-- `Image(image_path, x, y, width, height)`
-  - Supports both local files and URLs
-- `set_image(image_path)` - Change the image
+```python
+from macpy.image import Image
 
-For more examples, see the `examples/` directory.
+# Load from local file
+image = Image('local_image.png')
+
+# Load from URL
+image = Image('https://example.com/remote_image.png')
+
+window.add(image)
+```
+
+### Slider
+
+```python
+from macpy.slider import Slider
+
+def on_value_change(value): print(f'New value: {value}')
+
+slider = Slider()
+slider.set_callback(on_value_change)
+window.add(slider)
+```
+
+### Dropdown
+
+```python
+from macpy.dropdown import Dropdown
+
+def on_select(index): print(f'Selected index: {index}')
+
+dropdown = Dropdown(['Option 1', 'Option 2', 'Option 3'])
+dropdown.set_callback(on_select)
+window.add(dropdown)
+```
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
-MIT
+[MIT](https://choosealicense.com/licenses/mit/)
