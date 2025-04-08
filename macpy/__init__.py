@@ -9,6 +9,7 @@ from .textinput import TextInput
 from .checkbox import Checkbox
 from .image import Image
 from .slider import Slider
+from .sidebar import Sidebar
 
 __version__ = '0.1.0'
-__all__ = ['Window', 'Button', 'Label', 'TextInput', 'Checkbox', 'Image', 'Slider']
+__all__ = ['Window', 'Button', 'Label', 'TextInput', 'Checkbox', 'Image', 'Slider', 'Sidebar']

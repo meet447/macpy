@@ -84,6 +84,28 @@ dropdown.set_callback(on_select)
 window.add(dropdown)
 ```
 
+### Sidebar
+
+```python
+from macpy import Window, Sidebar
+
+# Create main window
+window = Window('App with Sidebar', width=1000, height=600)
+
+# Create and configure sidebar
+sidebar = Sidebar.sidebarWithFrame_(x=0, y=0, width=250, height=600)
+
+# Add navigation items
+sidebar.add_item('Home')
+sidebar.add_item('Documents')
+sidebar.add_item('Downloads')
+sidebar.add_item('Pictures')
+
+# Add sidebar to window
+window.add(sidebar)
+window.show()
+```
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

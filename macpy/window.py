@@ -26,11 +26,24 @@ class Window:
         )
     
         self.window.setTitle_(title)
-        self.window.setBackgroundColor_(NSColor.windowBackgroundColor())
         self.window.center()
-    
-        # Create a content view for adding subviews
+        
+        # Initialize content view first
         self.content_view = self.window.contentView()
+        
+        # Set window background color
+        self.window.setBackgroundColor_(NSColor.windowBackgroundColor())
+        self.set_background_color('#1C1C1E')
+
+    def set_background_color(self, color_hex):
+        """Set the background color of the window using hex color code"""
+        # Convert hex to RGB
+        color_hex = color_hex.lstrip('#')
+        rgb = tuple(int(color_hex[i:i+2], 16)/255.0 for i in (0, 2, 4))
+        
+        # Create NSColor from RGB values
+        ns_color = NSColor.colorWithRed_green_blue_alpha_(*rgb, 1.0)
+        self.window.setBackgroundColor_(ns_color)
     
     def add(self, component):
         """Add a UI component to the window"""

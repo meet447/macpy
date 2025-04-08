@@ -1,7 +1,8 @@
-from Foundation import NSObject, NSMakeRect
+from Foundation import NSObject, NSMakeRect, NSMakeSize
 from AppKit import *
 from objc import python_method
 from PyObjCTools import AppHelper
+import Quartz
 
 class Image:
     def __init__(self, image_path=None, x=0, y=0, width=100, height=100):
@@ -37,3 +38,13 @@ class Image:
         frame = self.native_view.frame()
         new_frame = NSMakeRect(frame.origin.x, frame.origin.y, width, height)
         self.native_view.setFrame_(new_frame)
+        
+    def set_corner_radius(self, radius):
+        """Set the corner radius of the image"""
+        if radius <= 0:
+            self.native_view.setWantsLayer_(False)
+            return
+            
+        self.native_view.setWantsLayer_(True)
+        self.native_view.layer().setCornerRadius_(radius)
+        self.native_view.layer().setMasksToBounds_(True)
