@@ -3,13 +3,13 @@ from AppKit import *
 from PyObjCTools import AppHelper
 
 from .window import Window
-from .components.button import Button
-from .components.label import Label
-from .components.textinput import TextInput
-from .components.checkbox import Checkbox
-from .components.image import Image
-from .components.slider import Slider
-from .components.sidebar import Sidebar
+from .button import Button
+from .label import Label
+from .textinput import TextInput
+from .checkbox import Checkbox
+from .image import Image
+from .slider import Slider
+from .sidebar import Sidebar
 
 __version__ = '0.1.0'
 __all__ = ['Window', 'Button', 'Label', 'TextInput', 'Checkbox', 'Image', 'Slider', 'Sidebar']
